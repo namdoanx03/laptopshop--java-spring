@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.ServletContext;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.service.UploadService;
 import vn.hoidanit.laptopshop.service.UserService;
@@ -24,8 +23,7 @@ public class UserController {
     public UserController(
         UploadService uploadService,
         PasswordEncoder  passwordEncoder,
-
-        UserService userService, ServletContext servletContext) {
+        UserService userService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
@@ -57,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/admin/user/create") // GET\
-        public String getCreateUserPage(Model model) {        model.addAttribute("newUser", new User());
+        public String getCreateUserPage(Model model) {model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
