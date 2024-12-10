@@ -17,11 +17,7 @@ public class OrderDetail {
     private long id;
     private long quantity;
     private double price;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 0513f5b (update)
     public long getId() {
         return id;
     }

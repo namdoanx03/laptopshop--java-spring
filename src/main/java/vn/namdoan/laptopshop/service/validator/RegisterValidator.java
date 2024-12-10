@@ -29,14 +29,12 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
             valid = false;
         }
         // Additional validations can be added here
-<<<<<<< HEAD
 
         // check email
         if (this.userService.checkEmailExist(user.getEmail())) {
-=======
         //check email
         if(this.userService.checkEmailExist(user.getEmail())){
->>>>>>> 0513f5b (update)
+
             context.buildConstraintViolationWithTemplate("Email da ton tai !")
                     .addPropertyNode("email")
                     .addConstraintViolation()

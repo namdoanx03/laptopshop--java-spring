@@ -52,8 +52,4 @@ public class Order {
     public String toString() {
         return "Order [id=" + id + ", totalPrice=" + totalPrice + "]";
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0513f5b (update)
 }
