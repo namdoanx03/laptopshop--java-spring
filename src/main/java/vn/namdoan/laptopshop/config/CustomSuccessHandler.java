@@ -20,7 +20,6 @@ import jakarta.servlet.http.HttpSession;
 import vn.namdoan.laptopshop.domain.User;
 import vn.namdoan.laptopshop.service.UserService;
 
-
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
@@ -56,7 +55,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         if (user != null) {
             session.setAttribute("fullName", user.getFullName());
             session.setAttribute("avatar", user.getAvatar());
+            session.setAttribute("id", user.getId());
+            session.setAttribute("email", user.getEmail());
         }
+
     }
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -76,4 +78,5 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         clearAuthenticationAttributes(request, authentication);
 
     }
+
 }
