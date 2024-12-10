@@ -23,11 +23,10 @@ public class UserController {
     private final UploadService uploadService;
     private final PasswordEncoder passwordEncoder;
 
-
     public UserController(
-        UploadService uploadService,
-        PasswordEncoder  passwordEncoder,
-        UserService userService) {
+            UploadService uploadService,
+            PasswordEncoder passwordEncoder,
+            UserService userService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
@@ -39,7 +38,7 @@ public class UserController {
         System.out.println(arrUsers);
 
         model.addAttribute("eric", "test");
-        model.addAttribute("hoidanit", "from controller with model");
+        model.addAttribute("namdoan", "from controller with model");
         return "hello";
     }
 
@@ -59,31 +58,32 @@ public class UserController {
     }
 
     @GetMapping("/admin/user/create") // GET\
-        public String getCreateUserPage(Model model) {model.addAttribute("newUser", new User());
+    public String getCreateUserPage(Model model) {
+        model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
-        @ModelAttribute("newUser") @Valid User hoidanit,
-        BindingResult newUserBindingResult,
-        @RequestParam("hoidanitFile") MultipartFile file) {
-              List<FieldError> errors = newUserBindingResult.getFieldErrors();
-              for (FieldError error : errors) {
-                  System.out.println(">>>" + error.getField() + " - " + error.getDefaultMessage());
-              }
-    //validate
-              if(newUserBindingResult.hasErrors()){
-                return "/admin/user/create";
-              }
-    //
-            String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-            String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
+            @ModelAttribute("newUser") @Valid User namdoan,
+            BindingResult newUserBindingResult,
+            @RequestParam("namdoanFile") MultipartFile file) {
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
+        // validate
+        if (newUserBindingResult.hasErrors()) {
+            return "/admin/user/create";
+        }
+        //
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        String hashPassword = this.passwordEncoder.encode(namdoan.getPassword());
 
-            hoidanit.setAvatar(avatar);
-            hoidanit.setPassword(hashPassword);
-            hoidanit.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
-            this.userService.handleSaveUser(hoidanit);
+        namdoan.setAvatar(avatar);
+        namdoan.setPassword(hashPassword);
+        namdoan.setRole(this.userService.getRoleByName(namdoan.getRole().getName()));
+        this.userService.handleSaveUser(namdoan);
         return "redirect:/admin/user";
     }
 
@@ -95,12 +95,12 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update")
-    public String postUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit) {
-        User currentUser = this.userService.getUserById(hoidanit.getId());
+    public String postUpdateUser(Model model, @ModelAttribute("newUser") User namdoan) {
+        User currentUser = this.userService.getUserById(namdoan.getId());
         if (currentUser != null) {
-            currentUser.setAddress(hoidanit.getAddress());
-            currentUser.setFullName(hoidanit.getFullName());
-            currentUser.setPhone(hoidanit.getPhone());
+            currentUser.setAddress(namdoan.getAddress());
+            currentUser.setFullName(namdoan.getFullName());
+            currentUser.setPhone(namdoan.getPhone());
 
             // bug here
             this.userService.handleSaveUser(currentUser);

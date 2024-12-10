@@ -48,7 +48,7 @@ public class ProductController {
     public String handleCreateProduct(
             @ModelAttribute("newProduct") @Valid Product pr,
             BindingResult newProductBindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file) {
+            @RequestParam("namdoanFile") MultipartFile file) {
         // validate
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/create";
@@ -63,18 +63,18 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    //update
+    // update
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProductPage(Model model, @PathVariable long id) {
         Optional<Product> newProduct = this.productService.fetchProductById(id);
         model.addAttribute("newProduct", newProduct.get());
         return "admin/product/update";
     }
-    
+
     @PostMapping("/admin/product/update")
     public String handleUpdateProduct(@ModelAttribute("newProduct") @Valid Product pr,
             BindingResult newProductBindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file) {
+            @RequestParam("namdoanFile") MultipartFile file) {
 
         // validate
         if (newProductBindingResult.hasErrors()) {
@@ -103,8 +103,7 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    
-//delete
+    // delete
     @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProductPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
@@ -117,7 +116,8 @@ public class ProductController {
         this.productService.deleteProduct(pr.getId());
         return "redirect:/admin/product";
     }
-// detail
+
+    // detail
     @GetMapping("/admin/product/{id}")
     public String getProductDetailPage(Model model, @PathVariable long id) {
         Product pr = this.productService.fetchProductById(id).get();
@@ -125,5 +125,5 @@ public class ProductController {
         model.addAttribute("id", id);
         return "admin/product/detail";
     }
-    
+
 }
