@@ -15,17 +15,27 @@ public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
+<<<<<<< HEAD
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
 
     public List<User> getAllUsers() {
+=======
+    public UserService(UserRepository userRepository,
+            RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
+>>>>>>> temp-branch
 
+    public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
 
     public List<User> getAllUsersByEmail(String email) {
+<<<<<<< HEAD
         return this.userRepository.findByEmail(email);
     }
 
@@ -34,13 +44,24 @@ public class UserService {
     // }
     public User getUserById(long id) {
         return this.userRepository.findById(id);
+=======
+        return this.userRepository.findOneByEmail(email);
+>>>>>>> temp-branch
     }
 
     public User handleSaveUser(User user) {
         User eric = this.userRepository.save(user);
+        System.out.println(eric);
         return eric;
     }
 
+<<<<<<< HEAD
+=======
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+    }
+
+>>>>>>> temp-branch
     public void deleteAUser(long id) {
         this.userRepository.deleteById(id);
     }
@@ -49,10 +70,12 @@ public class UserService {
         return this.roleRepository.findByName(name);
     }
 
+<<<<<<< HEAD
     // dau vao la RegisterDTO registerDTO, dau ra la User
+=======
+>>>>>>> temp-branch
     public User registerDTOtoUser(RegisterDTO registerDTO) {
         User user = new User();
-
         user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
         user.setEmail(registerDTO.getEmail());
         user.setPassword(registerDTO.getPassword());
@@ -61,5 +84,9 @@ public class UserService {
 
     public boolean checkEmailExist(String email) {
         return this.userRepository.existsByEmail(email);
+    }
+
+    public User getUserByEmail(String email) {
+        return this.userRepository.findByEmail(email);
     }
 }
