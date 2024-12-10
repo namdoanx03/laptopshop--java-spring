@@ -52,7 +52,6 @@
                                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                                     </div>
 
-
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">
@@ -72,7 +71,6 @@
                             </div>
                         </main>
                     </div>
-
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>

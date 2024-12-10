@@ -20,7 +20,7 @@
                     <div class="row ">
                         <div class="col-12 mt-5">
                             <div class="alert alert-danger" role="alert">
-                                Bạn không có quyền truy cập nguồn tài nguyên này
+                                Bạn không có quyền truy cập nguồn tài nguyên này !
                             </div>
                             <a href="/" class="btn btn-success">Trang Chủ</a>
                         </div>

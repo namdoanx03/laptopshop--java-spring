@@ -16,8 +16,6 @@ import jakarta.validation.Payload;
 public @interface RegisterChecked {
 
     String message() default "User register validation failed";
-
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Java Spring Starter template
 Template này được sử dụng cho series Java Spring MVC (dự án laptopshop) của tác giả Hỏi Dân IT (Eric)
 
@@ -17,3 +18,6 @@ Udemy Hỏi Dân IT: https://www.udemy.com/user/eric-7039/
 =======
 >>>>>>> temp-branch
 
+=======
+Laptopshop 
+>>>>>>> 0513f5b (update)

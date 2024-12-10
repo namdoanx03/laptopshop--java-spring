@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <!-- Navbar start -->
+    <!-- Navbar start -->
         <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -67,4 +67,4 @@
                 </nav>
             </div>
         </div>
-        <!-- Navbar End -->
+    <!-- Navbar End -->

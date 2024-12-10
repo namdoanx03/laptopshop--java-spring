@@ -14,7 +14,11 @@ import jakarta.persistence.Table;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0513f5b (update)
     private long id;
     private String name;
     private String description;
@@ -51,5 +55,9 @@ public class Role {
     public String toString() {
         return "Role [id=" + id + ", name=" + name + ", description=" + description + "]";
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0513f5b (update)
 }

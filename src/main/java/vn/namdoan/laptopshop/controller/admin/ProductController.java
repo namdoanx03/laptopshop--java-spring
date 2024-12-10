@@ -53,7 +53,6 @@ public class ProductController {
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/create";
         }
-
         // upload image
         String image = this.uploadService.handleSaveUploadFile(file, "product");
         pr.setImage(image);
@@ -62,7 +61,6 @@ public class ProductController {
 
         return "redirect:/admin/product";
     }
-
     // update
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProductPage(Model model, @PathVariable long id) {

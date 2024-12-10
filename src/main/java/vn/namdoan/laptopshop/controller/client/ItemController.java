@@ -11,9 +11,14 @@ import vn.namdoan.laptopshop.service.ProductService;
 @Controller
 public class ItemController {
 
+<<<<<<< HEAD
     // Mo hinh dependency injection
     // khoi tao 1 ham tao, khoi tao gia tri ban dau cua no, gan gia tri cho no
 
+=======
+    // Mo hinh dependency injection 
+    // khoi tao 1 ham tao, khoi tao gia tri ban dau cua no, gan gia tri cho no 
+>>>>>>> 0513f5b (update)
     private final ProductService productService;
 
     public ItemController(ProductService productService) {

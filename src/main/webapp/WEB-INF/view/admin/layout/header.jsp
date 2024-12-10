@@ -8,7 +8,7 @@
                 class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <span style="color: white;">Welcome, Hỏi Dân IT</span>
+            <span style="color: white;">Welcome, I'm Nam</span>
             <!-- <div class="input-group">
                         <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                             aria-describedby="btnNavbarSearch" />
@@ -23,7 +23,6 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
-
                     <li>
                         <hr class="dropdown-divider" />
                     </li>

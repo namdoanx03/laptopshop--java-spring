@@ -98,6 +98,9 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+<<<<<<< HEAD
 
 >>>>>>> temp-branch
+=======
+>>>>>>> 0513f5b (update)
 }

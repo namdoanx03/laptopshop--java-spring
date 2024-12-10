@@ -76,6 +76,9 @@ public class HomePageController {
     public String getDenyPage(Model model) {
         return "client/auth/deny";
     }
+<<<<<<< HEAD
     
 >>>>>>> temp-branch
+=======
+>>>>>>> 0513f5b (update)
 }

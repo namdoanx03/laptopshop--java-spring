@@ -33,9 +33,7 @@ public class ProductService {
          */
         return this.productRepository.findById(id);
     }
-
     public void deleteProduct(long id) {
         this.productRepository.deleteById(id);
     }
-
 }

@@ -57,7 +57,6 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             session.setAttribute("fullName", user.getFullName());
             session.setAttribute("avatar", user.getAvatar());
         }
-
     }
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -77,5 +76,4 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         clearAuthenticationAttributes(request, authentication);
 
     }
-
 }

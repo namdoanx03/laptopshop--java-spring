@@ -11,4 +11,5 @@ public class StrongPasswordValidator implements ConstraintValidator<StrongPasswo
         // uppercase letter, one special character and 8 characters long
         return value.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!*()]).{8,}$");
     }
+    
 }

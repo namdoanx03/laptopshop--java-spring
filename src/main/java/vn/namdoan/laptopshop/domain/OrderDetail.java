@@ -17,7 +17,11 @@ public class OrderDetail {
     private long id;
     private long quantity;
     private double price;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0513f5b (update)
     public long getId() {
         return id;
     }
@@ -57,7 +61,6 @@ public class OrderDetail {
     public void setPrice(double price) {
         this.price = price;
     }
-
     // order_detail many -> to one order
     @ManyToOne
     @JoinColumn(name = "order_id")

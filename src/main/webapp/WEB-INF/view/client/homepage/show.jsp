@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
         <html lang="en">
 
         <head>
@@ -45,7 +44,6 @@
             <jsp:include page="../layout/header.jsp" />
 
 
-
             <!-- Modal Search Start -->
             <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -68,9 +66,7 @@
             </div>
             <!-- Modal Search End -->
 
-            <jsp:include page="../layout/banner.jsp" />
-
-            
+            <jsp:include page="../layout/banner.jsp" />    
 
 
             <!-- Fruits Shop Start-->
@@ -146,7 +142,6 @@
             <!-- Back to Top -->
             <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
                     class="fa fa-arrow-up"></i></a>
-
 
             <!-- JavaScript Libraries -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
