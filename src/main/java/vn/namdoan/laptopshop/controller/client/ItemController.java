@@ -14,9 +14,6 @@ import vn.namdoan.laptopshop.service.ProductService;
 @Controller
 public class ItemController {
 
-    // Mo hinh dependency injection
-    // khoi tao 1 ham tao, khoi tao gia tri ban dau cua no, gan gia tri cho no
-
     private final ProductService productService;
 
     public ItemController(ProductService productService) {
@@ -38,8 +35,13 @@ public class ItemController {
         long productId = id;
         String email = (String) session.getAttribute("email");
 
-        this.productService.handleAddProductToCart(email, productId);
+        this.productService.handleAddProductToCart(email, productId, session);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/cart")
+    public String getCartPage(Model model) {
+        return "client/cart/show";
     }
 }
