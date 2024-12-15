@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import vn.namdoan.laptopshop.domain.Role;
 import vn.namdoan.laptopshop.domain.User;
 import vn.namdoan.laptopshop.domain.dto.RegisterDTO;
+import vn.namdoan.laptopshop.repository.OrderRepository;
+import vn.namdoan.laptopshop.repository.ProductRepository;
 import vn.namdoan.laptopshop.repository.RoleRepository;
 import vn.namdoan.laptopshop.repository.UserRepository;
 
@@ -14,43 +16,45 @@ import vn.namdoan.laptopshop.repository.UserRepository;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository,
+            RoleRepository roleRepository,
+            ProductRepository productRepository,
+            OrderRepository orderRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
-    // Lấy tất cả người dùng
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
 
-    // Lấy người dùng theo email
-    public User getUserByEmail(String email) {
-        return this.userRepository.findByEmail(email);
+    public List<User> getAllUsersByEmail(String email) {
+        return this.userRepository.findOneByEmail(email);
     }
 
-    // Lấy người dùng theo ID
+    public User handleSaveUser(User user) {
+        User eric = this.userRepository.save(user);
+        System.out.println(eric);
+        return eric;
+    }
+
     public User getUserById(long id) {
         return this.userRepository.findById(id);
     }
 
-    // Kiểm tra email đã tồn tại hay chưa
-    public boolean checkEmailExist(String email) {
-        return this.userRepository.existsByEmail(email);
-    }
-
-    // Xóa người dùng theo ID
     public void deleteAUser(long id) {
         this.userRepository.deleteById(id);
     }
 
-    // Lưu một user
-    public User handleSaveUser(User user) {
-        return this.userRepository.save(user);
+    public Role getRoleByName(String name) {
+        return this.roleRepository.findByName(name);
     }
 
-    // Chuyển RegisterDTO thành User
     public User registerDTOtoUser(RegisterDTO registerDTO) {
         User user = new User();
         user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
@@ -59,8 +63,23 @@ public class UserService {
         return user;
     }
 
-    // Lấy Role theo tên
-    public Role getRoleByName(String name) {
-        return this.roleRepository.findByName(name);
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    public User getUserByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+
+    public long countUsers() {
+        return this.userRepository.count();
+    }
+
+    public long countProducts() {
+        return this.productRepository.count();
+    }
+
+    public long countOrders() {
+        return this.orderRepository.count();
     }
 }
