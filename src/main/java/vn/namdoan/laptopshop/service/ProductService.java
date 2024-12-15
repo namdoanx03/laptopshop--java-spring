@@ -31,10 +31,6 @@ public class ProductService {
         this.userService = userService;
     }
 
-<<<<<<< HEAD
-    // function tao moi product
-=======
->>>>>>> d35450d (update cart)
     public Product createProduct(Product pr) {
         return this.productRepository.save(pr);
     }
@@ -44,14 +40,12 @@ public class ProductService {
     }
 
     public Optional<Product> fetchProductById(long id) {
-<<<<<<< HEAD
         /*
          * bien optional co 2 trang thai:
          * 1 , co gia tri, su dung ham get() no se tra ra doi tuong muon thao tac
          * 2, khong co gia tri
          */
-=======
->>>>>>> d35450d (update cart)
+
         return this.productRepository.findById(id);
     }
 

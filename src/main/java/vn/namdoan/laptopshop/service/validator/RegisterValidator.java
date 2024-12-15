@@ -17,30 +17,32 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
     }
 
     @Override
+    public void initialize(RegisterChecked constraintAnnotation) {
+        // This method can be used for initialization if needed
+    }
+
+    @Override
     public boolean isValid(RegisterDTO user, ConstraintValidatorContext context) {
         boolean valid = true;
 
-        // Check if password fields match
+        // Check if password and confirmPassword match
         if (!user.getPassword().equals(user.getConfirmPassword())) {
-            context.buildConstraintViolationWithTemplate("Confirm Password không chính xác!")
+            context.buildConstraintViolationWithTemplate("Mật khẩu xác nhận không chính xác!")
                     .addPropertyNode("confirmPassword")
                     .addConstraintViolation()
                     .disableDefaultConstraintViolation();
             valid = false;
         }
-        // Additional validations can be added here
 
-        // check email
-        if (this.userService.checkEmailExist(user.getEmail())) {
-        //check email
-        if(this.userService.checkEmailExist(user.getEmail())){
-
-            context.buildConstraintViolationWithTemplate("Email da ton tai !")
+        // Check if email already exists
+        if (userService.checkEmailExist(user.getEmail())) {
+            context.buildConstraintViolationWithTemplate("Email đã tồn tại!")
                     .addPropertyNode("email")
                     .addConstraintViolation()
                     .disableDefaultConstraintViolation();
             valid = false;
         }
+
         return valid;
     }
 }

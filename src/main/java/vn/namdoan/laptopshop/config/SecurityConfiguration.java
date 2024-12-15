@@ -2,18 +2,15 @@ package vn.namdoan.laptopshop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-<<<<<<< HEAD
+
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-=======
+
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
@@ -21,18 +18,13 @@ import org.springframework.session.security.web.authentication.SpringSessionReme
 import jakarta.servlet.DispatcherType;
 import vn.namdoan.laptopshop.service.CustomUserDetailsService;
 import vn.namdoan.laptopshop.service.UserService;
->>>>>>> temp-branch
+
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
 
     @Bean
-<<<<<<< HEAD
-    public PasswordEncoder passworkEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-=======
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -98,9 +90,4 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-<<<<<<< HEAD
-
->>>>>>> temp-branch
-=======
->>>>>>> 0513f5b (update)
 }

@@ -2,15 +2,7 @@ package vn.namdoan.laptopshop.domain;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,11 +19,7 @@ public class User {
     private String email;
 
     @NotNull
-<<<<<<< HEAD
     @Size(min = 2, message = "Password phải có tối thiểu 2 kí tự")
-=======
-    @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
->>>>>>> d35450d (update cart)
     private String password;
 
     @NotNull
@@ -39,34 +27,34 @@ public class User {
     private String fullName;
 
     private String address;
+
     private String phone;
 
     private String avatar;
 
-    // roleId
-    // User many -> to one -> role
-<<<<<<< HEAD
-    // role_id : chinh la FK
-=======
->>>>>>> d35450d (update cart)
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 
-<<<<<<< HEAD
-=======
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cart cart;
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
-                + ", address=" + address + ", phone=" + phone + ", avatar=" + avatar + "]";
+        return "User [id=" + id +
+                ", email=" + email +
+                ", password=" + password +
+                ", fullName=" + fullName +
+                ", address=" + (address != null ? address : "N/A") +
+                ", phone=" + (phone != null ? phone : "N/A") +
+                ", avatar=" + (avatar != null ? avatar : "N/A") +
+                "]";
     }
 
+    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -123,7 +111,6 @@ public class User {
         this.avatar = avatar;
     }
 
->>>>>>> d35450d (update cart)
     public Role getRole() {
         return role;
     }
@@ -147,5 +134,4 @@ public class User {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
-
 }

@@ -15,65 +15,42 @@ public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
-<<<<<<< HEAD
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
 
-    public List<User> getAllUsers() {
-=======
-    public UserService(UserRepository userRepository,
-            RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
->>>>>>> temp-branch
-
+    // Lấy tất cả người dùng
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
 
-    public List<User> getAllUsersByEmail(String email) {
-<<<<<<< HEAD
+    // Lấy người dùng theo email
+    public User getUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
 
-    // public List<User> getAllUsersById(long id){
-    // return this.userRepository.findById(id);
-    // }
-    public User getUserById(long id) {
-        return this.userRepository.findById(id);
-=======
-        return this.userRepository.findOneByEmail(email);
->>>>>>> temp-branch
-    }
-
-    public User handleSaveUser(User user) {
-        User eric = this.userRepository.save(user);
-        System.out.println(eric);
-        return eric;
-    }
-
-<<<<<<< HEAD
-=======
+    // Lấy người dùng theo ID
     public User getUserById(long id) {
         return this.userRepository.findById(id);
     }
 
->>>>>>> temp-branch
+    // Kiểm tra email đã tồn tại hay chưa
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    // Xóa người dùng theo ID
     public void deleteAUser(long id) {
         this.userRepository.deleteById(id);
     }
 
-    public Role getRoleByName(String name) {
-        return this.roleRepository.findByName(name);
+    // Lưu một user
+    public User handleSaveUser(User user) {
+        return this.userRepository.save(user);
     }
 
-<<<<<<< HEAD
-    // dau vao la RegisterDTO registerDTO, dau ra la User
-=======
->>>>>>> temp-branch
+    // Chuyển RegisterDTO thành User
     public User registerDTOtoUser(RegisterDTO registerDTO) {
         User user = new User();
         user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
@@ -81,10 +58,9 @@ public class UserService {
         user.setPassword(registerDTO.getPassword());
         return user;
     }
-    public boolean checkEmailExist(String email) {
-        return this.userRepository.existsByEmail(email);
-    }
-    public User getUserByEmail(String email) {
-        return this.userRepository.findByEmail(email);
+
+    // Lấy Role theo tên
+    public Role getRoleByName(String name) {
+        return this.roleRepository.findByName(name);
     }
 }

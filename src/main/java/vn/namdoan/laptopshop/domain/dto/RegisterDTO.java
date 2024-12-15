@@ -1,20 +1,12 @@
 package vn.namdoan.laptopshop.domain.dto;
 
-<<<<<<< HEAD
-=======
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
->>>>>>> temp-branch
 import vn.namdoan.laptopshop.service.validator.RegisterChecked;
 
 @RegisterChecked
 public class RegisterDTO {
-<<<<<<< HEAD
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-=======
+
     @Size(min = 3, message = "FirstName phải có tối thiểu 3 ký tự")
     private String firstName;
 
@@ -26,7 +18,6 @@ public class RegisterDTO {
     private String password;
 
     @Size(min = 3, message = "confirmPassword phải có tối thiểu 3 ký tự")
->>>>>>> temp-branch
     private String confirmPassword;
 
     public String getFirstName() {

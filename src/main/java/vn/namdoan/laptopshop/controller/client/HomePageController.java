@@ -17,10 +17,6 @@ import vn.namdoan.laptopshop.domain.User;
 import vn.namdoan.laptopshop.domain.dto.RegisterDTO;
 import vn.namdoan.laptopshop.service.ProductService;
 import vn.namdoan.laptopshop.service.UserService;
-<<<<<<< HEAD
-=======
-
->>>>>>> temp-branch
 
 @Controller
 public class HomePageController {
@@ -70,15 +66,9 @@ public class HomePageController {
         return "client/auth/login";
     }
 
-<<<<<<< HEAD
-=======
     @GetMapping("/access-deny")
     public String getDenyPage(Model model) {
         return "client/auth/deny";
     }
-<<<<<<< HEAD
     
->>>>>>> temp-branch
-=======
->>>>>>> 0513f5b (update)
 }
