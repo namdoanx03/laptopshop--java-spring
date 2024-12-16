@@ -3,6 +3,9 @@ package vn.namdoan.laptopshop.controller.admin;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,9 +35,30 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProduct(Model model) {
-        List<Product> prs = this.productService.fetchProducts();
-        model.addAttribute("products", prs);
+    public String getProduct(
+            Model model,
+            @RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
+        try {
+            if (pageOptional.isPresent()) {
+                // convert from String to int
+                page = Integer.parseInt(pageOptional.get());
+            } else {
+                // page = 1
+            }
+        } catch (Exception e) {
+            // page = 1
+            // TODO: handle exception
+        }
+
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        Page<Product> prs = this.productService.fetchProducts(pageable);
+        List<Product> listProducts = prs.getContent();
+        model.addAttribute("products", listProducts);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", prs.getTotalPages());
+
         return "admin/product/show";
     }
 
@@ -48,11 +72,12 @@ public class ProductController {
     public String handleCreateProduct(
             @ModelAttribute("newProduct") @Valid Product pr,
             BindingResult newProductBindingResult,
-            @RequestParam("namdoanFile") MultipartFile file) {
+            @RequestParam("hoidanitFile") MultipartFile file) {
         // validate
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/create";
         }
+
         // upload image
         String image = this.uploadService.handleSaveUploadFile(file, "product");
         pr.setImage(image);
@@ -61,18 +86,18 @@ public class ProductController {
 
         return "redirect:/admin/product";
     }
-    // update
+
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProductPage(Model model, @PathVariable long id) {
-        Optional<Product> newProduct = this.productService.fetchProductById(id);
-        model.addAttribute("newProduct", newProduct.get());
+        Optional<Product> currentProduct = this.productService.fetchProductById(id);
+        model.addAttribute("newProduct", currentProduct.get());
         return "admin/product/update";
     }
 
     @PostMapping("/admin/product/update")
     public String handleUpdateProduct(@ModelAttribute("newProduct") @Valid Product pr,
             BindingResult newProductBindingResult,
-            @RequestParam("namdoanFile") MultipartFile file) {
+            @RequestParam("hoidanitFile") MultipartFile file) {
 
         // validate
         if (newProductBindingResult.hasErrors()) {
@@ -101,7 +126,6 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    // delete
     @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProductPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
@@ -115,7 +139,6 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    // detail
     @GetMapping("/admin/product/{id}")
     public String getProductDetailPage(Model model, @PathVariable long id) {
         Product pr = this.productService.fetchProductById(id).get();
@@ -123,5 +146,4 @@ public class ProductController {
         model.addAttribute("id", id);
         return "admin/product/detail";
     }
-
 }
